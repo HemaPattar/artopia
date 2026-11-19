@@ -6,8 +6,7 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(Config)
 
-    @app.route("/")
-    def home():
-        return "Welcome to Artopia – Where Imagination Becomes Art"
+    from app.main.routes import bp as main_bp
+    app.register_blueprint(main_bp)
 
     return app
